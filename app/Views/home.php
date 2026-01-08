@@ -208,7 +208,7 @@
                 </p>
 
                 <div class="text-sm text-slate-700 space-y-1">
-                    <p><span class="font-semibold">Alamat:</span> Jl. Contoh No. 123, Kota Contoh</p>
+                    <p><span class="font-semibold">Alamat:</span> Jl. Gading Serpong No 70, Kota Tangerang Selatan</p>
                     <p><span class="font-semibold">Telepon:</span> (021) 123 4567</p>
                     <p><span class="font-semibold">Email:</span> info@incubesolutions.com</p>
                 </div>
