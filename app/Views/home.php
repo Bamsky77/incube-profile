@@ -22,9 +22,6 @@
     <a href="#services" class="hover:text-sky-600">Layanan</a>
     <a href="#portfolio" class="hover:text-sky-600">Portfolio</a>
     <a href="#contact" class="hover:text-sky-600">Kontak</a>
-    <a href="<?= site_url('login'); ?>" class="text-xs text-slate-500 hover:text-sky-600 ml-4">
-        Admin
-    </a>
 </nav>
 
         </div>
