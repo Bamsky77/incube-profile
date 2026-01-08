@@ -18,11 +18,15 @@
             </a>
 
             <nav class="hidden md:flex gap-6 text-sm font-medium">
-                <a href="#about" class="hover:text-sky-600">Tentang</a>
-                <a href="#services" class="hover:text-sky-600">Layanan</a>
-                <a href="#portfolio" class="hover:text-sky-600">Portfolio</a>
-                <a href="#contact" class="hover:text-sky-600">Kontak</a>
-            </nav>
+    <a href="#about" class="hover:text-sky-600">Tentang</a>
+    <a href="#services" class="hover:text-sky-600">Layanan</a>
+    <a href="#portfolio" class="hover:text-sky-600">Portfolio</a>
+    <a href="#contact" class="hover:text-sky-600">Kontak</a>
+    <a href="<?= site_url('login'); ?>" class="text-xs text-slate-500 hover:text-sky-600 ml-4">
+        Admin
+    </a>
+</nav>
+
         </div>
     </header>
 
@@ -53,7 +57,7 @@
                 </div>
 
                 <div class="mt-6 text-xs text-slate-500">
-                    Dibuat oleh: <span class="font-semibold">[Nama Kamu]</span> • PKL IncubeSolutions
+                    Dibuat oleh: <span class="font-semibold">[Ahmad Hilbram Dzulqa]</span> • PKL IncubeSolutions
                 </div>
             </div>
 
@@ -133,7 +137,7 @@
         </div>
     </section>
 
-    <!-- SERVICES SECTION -->
+        <!-- SERVICES SECTION (DINAMIS DARI DATABASE) -->
     <section id="services" class="py-14">
         <div class="max-w-6xl mx-auto px-4">
             <div class="text-center mb-8">
@@ -144,44 +148,26 @@
             </div>
 
             <div class="grid md:grid-cols-3 gap-6">
-                <div class="p-5 rounded-2xl bg-white border border-slate-200 shadow-sm">
-                    <h3 class="font-semibold mb-2">Pengembangan Website</h3>
-                    <p class="text-sm text-slate-600 mb-3">
-                        Pembuatan website company profile, landing page, dan portal informasi.
+                <?php if (!empty($services)): ?>
+                    <?php foreach ($services as $service): ?>
+                        <div class="p-5 rounded-2xl bg-white border border-slate-200 shadow-sm">
+                            <h3 class="font-semibold mb-2">
+                                <?= esc($service['title']); ?>
+                            </h3>
+                            <p class="text-sm text-slate-600">
+                                <?= esc($service['description']); ?>
+                            </p>
+                        </div>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <p class="text-sm text-slate-500 col-span-3">
+                        Belum ada data layanan. Silakan tambahkan melalui halaman administrator.
                     </p>
-                    <ul class="text-xs text-slate-600 space-y-1">
-                        <li>• Desain responsif</li>
-                        <li>• Optimasi performa</li>
-                        <li>• Mudah dikelola</li>
-                    </ul>
-                </div>
-
-                <div class="p-5 rounded-2xl bg-white border border-slate-200 shadow-sm">
-                    <h3 class="font-semibold mb-2">Sistem Informasi</h3>
-                    <p class="text-sm text-slate-600 mb-3">
-                        Pembuatan sistem informasi internal perusahaan berbasis web.
-                    </p>
-                    <ul class="text-xs text-slate-600 space-y-1">
-                        <li>• Manajemen data</li>
-                        <li>• Akses multi user</li>
-                        <li>• Integrasi database</li>
-                    </ul>
-                </div>
-
-                <div class="p-5 rounded-2xl bg-white border border-slate-200 shadow-sm">
-                    <h3 class="font-semibold mb-2">Konsultasi &amp; Maintenance</h3>
-                    <p class="text-sm text-slate-600 mb-3">
-                        Layanan perawatan sistem dan konsultasi pengembangan lebih lanjut.
-                    </p>
-                    <ul class="text-xs text-slate-600 space-y-1">
-                        <li>• Monitoring berkala</li>
-                        <li>• Perbaikan bug</li>
-                        <li>• Upgrade fitur</li>
-                    </ul>
-                </div>
+                <?php endif; ?>
             </div>
         </div>
     </section>
+
 
     <!-- PORTFOLIO SECTION -->
     <section id="portfolio" class="py-14 bg-white border-y border-slate-200">
@@ -235,14 +221,12 @@
 
             <div>
                 <?php if (session()->getFlashdata('success')): ?>
-    <div class="mb-4 text-xs text-green-700 bg-green-100 border border-green-200 rounded-lg px-3 py-2">
-        <?= session()->getFlashdata('success'); ?>
-    </div>
-<?php endif; ?>
+                    <div class="mb-4 text-xs text-green-700 bg-green-100 border border-green-200 rounded-lg px-3 py-2">
+                        <?= session()->getFlashdata('success'); ?>
+                    </div>
+                <?php endif; ?>
 
-                <!-- Nanti action diarahkan ke controller, sementara # saja -->
-               <form action="<?= site_url('contact/send'); ?>" method="post" class="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm space-y-4">
-
+                <form action="<?= site_url('contact/send'); ?>" method="post" class="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm space-y-4">
                     <div>
                         <label class="block text-xs font-semibold text-slate-700 mb-1" for="name">Nama Lengkap</label>
                         <input type="text" id="name" name="name" required

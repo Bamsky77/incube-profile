@@ -2,10 +2,16 @@
 
 namespace App\Controllers;
 
+use App\Models\ServiceModel;
+
 class Home extends BaseController
 {
     public function index()
     {
-        return view('home');
+        $serviceModel = new ServiceModel();
+
+        $data['services'] = $serviceModel->findAll();
+
+        return view('home', $data);
     }
 }
