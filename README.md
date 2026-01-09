@@ -1,5 +1,15 @@
 # CodeIgniter 4 Framework
 
+## Screenshots
+
+![SS 1](image.png)
+![SS 2](image (1).png)
+![SS 3](image (2).png)
+![SS 4](image (3).png)
+![SS 5](image (4).png)
+![SS 6](image (5).png)
+
+
 ## What is CodeIgniter?
 
 CodeIgniter is a PHP full-stack web framework that is light, fast, flexible and secure.
